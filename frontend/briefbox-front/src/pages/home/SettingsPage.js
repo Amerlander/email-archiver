@@ -29,7 +29,7 @@ const SettingsPage = () => {
   useEffect(() => {
     const fetchSecretKey = async () => {
       try {
-        const response = await fetch("http://localhost:5050/utilities/fernet_key");
+        const response = await fetch("http://192.168.1.105:5050/utilities/fernet_key");
         if (response.ok) {
           const data = await response.json();
           setSecretKey(data.fernet_key);

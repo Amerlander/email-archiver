@@ -231,7 +231,7 @@ function SearchPage() {
       if (searchTerm.trim() !== "") {
         try {
           const response = await axios.post(
-            "http://localhost:5050/emails/search_emails",
+            "http://192.168.1.105:5050/emails/search_emails",
             {
               query: searchTerm,
             }

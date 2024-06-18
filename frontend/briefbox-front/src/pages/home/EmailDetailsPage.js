@@ -110,7 +110,7 @@ const EmailDetailsPage = () => {
         setAttachments([]); // Clear attachments for cached email
       } else {
         const response = await axios.get(
-          `http://localhost:5050/emails/email_details/${emailId}`
+          `http://192.168.1.105:5050/emails/email_details/${emailId}`
         );
         setEmail(response.data.email);
         setAttachments(response.data.attachments);
@@ -122,7 +122,7 @@ const EmailDetailsPage = () => {
       }
 
       const totalEmailsResponse = await axios.get(
-        "http://localhost:5050/emails/emails",
+        "http://192.168.1.105:5050/emails/emails",
         {
           params: {
             page: 1,
@@ -139,7 +139,7 @@ const EmailDetailsPage = () => {
 
       if (prevEmailId >= 1 && !emailCache[prevEmailId]) {
         const prevEmailResponse = await axios.get(
-          `http://localhost:5050/emails/email_details/${prevEmailId}`
+          `http://192.168.1.105:5050/emails/email_details/${prevEmailId}`
         );
         setEmailCache((prevCache) => ({
           ...prevCache,
@@ -149,7 +149,7 @@ const EmailDetailsPage = () => {
 
       if (nextEmailId <= totalEmails && !emailCache[nextEmailId]) {
         const nextEmailResponse = await axios.get(
-          `http://localhost:5050/emails/email_details/${nextEmailId}`
+          `http://192.168.1.105:5050/emails/email_details/${nextEmailId}`
         );
         setEmailCache((prevCache) => ({
           ...prevCache,
@@ -221,7 +221,7 @@ const EmailDetailsPage = () => {
 
     const cidPattern = /cid:([^"]+)/g;
     const replacedBody = body.replace(cidPattern, (match, cid) => {
-      return `http://localhost:5050/attachments/get_inline_image/${encodeURIComponent(cid)}`;
+      return `http://192.168.1.105:5050/attachments/get_inline_image/${encodeURIComponent(cid)}`;
     });
 
     if (content_type === "text/plain") {
@@ -417,7 +417,7 @@ const EmailDetailsPage = () => {
                             {attachments.map((attachment) => (
                               <li key={attachment.id}>
                                 <a
-                                  href={`http://localhost:5050/attachments/download_attachment/${attachment.id}`}
+                                  href={`http://192.168.1.105:5050/attachments/download_attachment/${attachment.id}`}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   style={{ color: "white" }}
@@ -559,7 +559,7 @@ const EmailDetailsPage = () => {
                         {attachments.map((attachment) => (
                           <li key={attachment.id}>
                             <a
-                              href={`http://localhost:5050/attachments/download_attachment/${attachment.id}`}
+                              href={`http://192.168.1.105:5050/attachments/download_attachment/${attachment.id}`}
                               target="_blank"
                               rel="noopener noreferrer"
                               style={{ color: "white" }}

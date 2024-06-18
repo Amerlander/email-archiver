@@ -66,7 +66,7 @@ function LoginRegisterPage() {
     };
 
     try {
-      const response = await axios.post("http://localhost:5050/auth/login", userData);
+      const response = await axios.post("http://192.168.1.105:5050/auth/login", userData);
 
       if (response.status === 200 && response.data.access_token) {
         console.log('Logged in successfully');

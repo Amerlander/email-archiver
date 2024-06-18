@@ -18,7 +18,7 @@ function Statistics() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await axios.get("http://localhost:5050/utilities/stats");
+        const response = await axios.get("http://192.168.1.105:5050/utilities/stats");
         setStats(response.data);
       } catch (error) {
         console.error('Error fetching statistics:', error);

@@ -24,7 +24,7 @@ function LatestArchivedEmails() {
 
     const fetchLatestEmails = async () => {
       try {
-        const response = await axios.get("http://localhost:5050/emails/emails", {
+        const response = await axios.get("http://192.168.1.105:5050/emails/emails", {
           params: {
             page: 1,
             per_page: 10,
